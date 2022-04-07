@@ -1,3 +1,5 @@
+package practice;
+
 /*
  * @lc app=leetcode.cn id=26 lang=java
  *
@@ -7,27 +9,39 @@
 // @lc code=start
 class Solution {
     public int removeDuplicates(int[] nums) {
-        int flag = -1;//0没找到
-        int last = 0;
+        int slow = 0, fast = 0;
 
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 0; j < i; j++)
-                if (nums[j] == nums[i]) {
-                    flag= j;
-                    break;
-                }
-
-            if(flag==-1){
-                nums[last] = nums[i];
-                last++;
+        while (fast < nums.length) {
+            if (nums[fast] != nums[slow]) {
+                slow++;
+                nums[slow] = nums[fast];
             }
-            
-            flag = -1;
 
+            fast++;
         }
+        return slow+1;
 
-        return last;
+        // int flag = -1;//0没找到
+        // int last = 0;
+
+        // for (int i = 0; i < nums.length; i++) {
+        // for (int j = 0; j < i; j++)
+        // if (nums[j] == nums[i]) {
+        // flag= j;
+        // break;
+        // }
+
+        // if(flag==-1){
+        // nums[last] = nums[i];
         // last++;
+        // }
+
+        // flag = -1;
+
+        // }
+
+        // return last;
+
     }
 }
 // @lc code=end
