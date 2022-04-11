@@ -28,6 +28,8 @@ class Solution {
             }
             total = Math.max(total, i - start + 1);
         }
+
+        
         return total;
     }
 }
