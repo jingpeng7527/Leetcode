@@ -14,7 +14,7 @@ class Solution {
         Map<Character, Integer> window = new HashMap<Character, Integer>();
 
         for (int i = 0; i < t.length(); i++) {
-            char c = s.charAt(i);
+            char c = t.charAt(i);
             need.put(c, need.getOrDefault(c, 0) + 1);
         }
 
@@ -31,7 +31,7 @@ class Solution {
             end++;
 
             // 如果该字符等于所给字符串中的字符就可以放进去
-            if (end < s.length() && need.containsKey(s.charAt(end))) {
+            if (need.containsKey(x)) {
                 window.put(x, window.getOrDefault(x, 0) + 1);
                 if (window.get(x).equals(need.get(x))) {
                     valid++;
@@ -50,7 +50,7 @@ class Solution {
                 start++;
 
                 // 如果该字符是所需字符时需要操作
-                if (start < s.length() && need.containsKey(s.charAt(start))) {
+                if (need.containsKey(y)) {
                     if (window.get(y).equals(need.get(y))) {
                         valid--;
                         // 如果窗口中的该字符字数等于所给字符字数则有一个所需字符的个数不满足要求
