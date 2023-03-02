@@ -1,12 +1,7 @@
-import java.util.LinkedList;
-import java.util.Queue;
-
-import javax.swing.tree.TreeNode;
-
 /*
- * @lc app=leetcode id=104 lang=java
+ * @lc app=leetcode id=111 lang=java
  *
- * [104] Maximum Depth of Binary Tree
+ * [111] Minimum Depth of Binary Tree
  */
 
 // @lc code=start
@@ -26,7 +21,8 @@ import javax.swing.tree.TreeNode;
  * }
  */
 class Solution {
-    public int maxDepth(TreeNode root) {
+    public int minDepth(TreeNode root) {
+
         if (root == null) {
             return 0;
         }
@@ -40,6 +36,9 @@ class Solution {
             int size = queue.size();
             while (size != 0) {
                 TreeNode cur = queue.poll();
+                if (cur.left == null && cur.right == null) {
+                    return depth+1;
+                }
                 if (cur.left != null) {
                     queue.offer(cur.left);
                 }
@@ -52,10 +51,17 @@ class Solution {
         }
 
         return depth;
+
         // else {
-        //     int maxLeft = maxDepth(root.left);
-        //     int maxRight = maxDepth(root.right);
-        //     return Math.max(maxLeft, maxRight) + 1;
+        //     int maxLeft = minDepth(root.left);
+        //     int maxRight = minDepth(root.right);
+        //     if (maxLeft==0) {
+        //         return maxRight + 1;
+        //     } else if (maxRight == 0) {
+        //         return maxLeft + 1;
+        //     } else{
+        //         return Math.min(maxLeft, maxRight) + 1;
+        //     }
         // }
     }
 }
