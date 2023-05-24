@@ -5,6 +5,10 @@
  */
 
 // @lc code=start
+
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     public boolean isAnagram(String s, String t) {
         int[] count = new int[26];
@@ -22,6 +26,11 @@ class Solution {
             }
         }
         return true;
+
+        // Map<Integer, Integer> freqs = new HashMap<>();
+	    // s.chars().forEach(ch -> freqs.put(ch, freqs.getOrDefault(ch, 0) + 1));
+	    // t.chars().forEach(ch -> freqs.put(ch, freqs.getOrDefault(ch, 0) - 1));
+	    // return freqs.values().stream().allMatch(x -> x == 0);
 
     }
 }
