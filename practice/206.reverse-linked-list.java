@@ -19,6 +19,17 @@ import java.util.List;
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode tmp = null;
+        while (head != null) {
+            tmp = head.next;
+            head.next = prev;
+            prev = head;
+            head = tmp;
+        }
+        
+        return prev;
+        
         // ListNode dummy = new ListNode(-1, head);
         // ListNode pre = null;
         // ListNode cur = head;
@@ -33,17 +44,17 @@ class Solution {
         
         // return pre;
 
-        //recusion
-        if (head == null) {
-            return null;
-        }
-        if (head.next == null) {
-            return head;
-        }
-        ListNode re = reverseList(head.next);
-        head.next.next = head;
-        head.next = null;
-        return re;
+        // //recusion
+        // if (head == null) {
+        //     return null;
+        // }
+        // if (head.next == null) {
+        //     return head;
+        // }
+        // ListNode re = reverseList(head.next);
+        // head.next.next = head;
+        // head.next = null;
+        // return re;
     }
 }
 // @lc code=end

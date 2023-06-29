@@ -19,22 +19,40 @@ import javax.print.event.PrintEvent;
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode tep = new ListNode(-1);
-        tep.next = head;
-        ListNode slow = tep;
-        ListNode fast = tep;
-        
+        ListNode dummy = new ListNode(-1,head);
+        ListNode prev = dummy;
+        head = dummy;
+
         for (int i = 0; i < n; i++) {
-            fast = fast.next;
+            head = head.next;
         }
 
-        while (fast.next != null) {
-            fast = fast.next;
-            slow = slow.next;
+        while (head.next != null) {
+            prev = prev.next;
+            head = head.next;
         }
+
+        prev.next = prev.next.next;
+
+        return dummy.next;
+
+
+        // ListNode tep = new ListNode(-1);
+        // tep.next = head;
+        // ListNode slow = tep;
+        // ListNode fast = tep;
         
-        slow.next = slow.next.next;
-        return tep.next;
+        // for (int i = 0; i < n; i++) {
+        //     fast = fast.next;
+        // }
+
+        // while (fast.next != null) {
+        //     fast = fast.next;
+        //     slow = slow.next;
+        // }
+        
+        // slow.next = slow.next.next;
+        // return tep.next;
     }
 }
 // @lc code=end
