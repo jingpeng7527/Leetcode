@@ -13,21 +13,32 @@ import java.util.Set;
 
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        Set<Integer> mapp = new HashSet<>();
-        Boolean flag = false;
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                return true;
+            }
+            map.put(nums[i], 1);
+        }
+        
+        return false;
+
+        // Set<Integer> mapp = new HashSet<>();
+        // Boolean flag = false;
+
+        // // for (int i : nums) {
+        // //     mapp.add(i);
+        // // }
+        // // return mapp.size()!=nums.length;
 
         // for (int i : nums) {
-        //     mapp.add(i);
+        //     if (!mapp.add(i)) {
+        //         flag = true;
+        //         break;
+        //     }
         // }
-        // return mapp.size()!=nums.length;
-
-        for (int i : nums) {
-            if (!mapp.add(i)) {
-                flag = true;
-                break;
-            }
-        }
-        return flag;
+        // return flag;
     }
 }
 // @lc code=end
