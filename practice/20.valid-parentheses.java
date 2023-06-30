@@ -1,5 +1,6 @@
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /*
  * @lc app=leetcode id=20 lang=java
@@ -10,22 +11,41 @@ import java.util.LinkedList;
 // @lc code=start
 class Solution {
     public boolean isValid(String s) {
-        Deque<Character> deque = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
-                deque.push(')');
+                stack.add(')');
             } else if (s.charAt(i) == '{') {
-                deque.push('}');
+                stack.add('}');
             } else if (s.charAt(i) == '[') {
-                deque.push(']');
-            } else if (deque.isEmpty() || s.charAt(i) != deque.peek()) {
+                stack.add(']');
+            } else if (stack.size() == 0 || stack.peek() != s.charAt(i)) {
                 return false;
             } else {
-                deque.pop();
+                stack.pop();
             }
-        }
 
-        return deque.isEmpty();
+        }
+        return stack.isEmpty();
+        
+
+
+        // Deque<Character> deque = new LinkedList<>();
+        // for (int i = 0; i < s.length(); i++) {
+        //     if (s.charAt(i) == '(') {
+        //         deque.push(')');
+        //     } else if (s.charAt(i) == '{') {
+        //         deque.push('}');
+        //     } else if (s.charAt(i) == '[') {
+        //         deque.push(']');
+        //     } else if (deque.isEmpty() || s.charAt(i) != deque.peek()) {
+        //         return false;
+        //     } else {
+        //         deque.pop();
+        //     }
+        // }
+
+        // return deque.isEmpty();
 
     }
 }
