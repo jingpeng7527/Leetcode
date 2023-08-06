@@ -30,6 +30,12 @@ class Solution {
         // return nums[nums.length / 2];
 
         // // Boyer-Moore voting
+        // 摩尔投票法
+        // 1. 选出一个候选人
+        // 2. 遍历数组，如果当前元素与候选人相同，count++，否则count--
+        // 3. 如果count为0，更换候选人
+        // 4. 最后留下的候选人就是众数
+        
         // int candi = 0;
         // int count =0;
 
