@@ -13,7 +13,12 @@ class Solution {
         if (s.length() == 0) {
             return 0;
         }
-
+        // 1. use hashmap to store the index of each char
+        // 2. use left pointer to test if there is any repeating character  
+        //  if yes, change the left(start pointer)  
+        // important: need to judge if the repeating postion is before or after the current left
+        // if it is before, no need to change left; if after, change it to the repeating position+1
+        // 3. update the max 
         Map<Character, Integer> map = new HashMap<>();
 
         int left = 0;
