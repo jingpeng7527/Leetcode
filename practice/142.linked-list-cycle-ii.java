@@ -21,25 +21,48 @@ public class Solution {
         ListNode fast = head;
         ListNode slow = head;
 
-        while (fast != null && fast.next != null) {
+       
+        
+        while (true) {
+            if (fast == null || fast.next == null)
+                return null;
+            
             slow = slow.next;
             fast = fast.next.next;
 
             if (slow == fast) {
-                ListNode index1 = fast;
-                ListNode index2 = head;
-
-                while (index1 != index2) {
-                    index1 = index1.next;
-                    index2 = index2.next;
-
-                }
-
-                return index1;
+                break;
             }
         }
+        
+        slow = head;
 
-        return null;
+        while (fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        
+        return fast;
+
+        // while (fast != null && fast.next != null) {
+        //     slow = slow.next;
+        //     fast = fast.next.next;
+
+        //     if (slow == fast) {
+        //         ListNode index1 = fast;
+        //         ListNode index2 = head;
+
+        //         while (index1 != index2) {
+        //             index1 = index1.next;
+        //             index2 = index2.next;
+
+        //         }
+
+        //         return index1;
+        //     }
+        // }
+
+        // return null;
     }
 }
 // @lc code=end
