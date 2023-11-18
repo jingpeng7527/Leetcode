@@ -29,28 +29,49 @@ class Solution {
     // 10. 本题中，N为课程数，M为先修课程的要求数
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        // add all the edge to a graph
-        List<Integer>[] graph = new LinkedList[numCourses];
+        LinkedList<Integer>[] graph = new LinkedList[numCourses];
 
-        for (int i = 0; i < numCourses; i++) {
+        for (int i = 0; i < graph.length; i++) {
             graph[i] = new LinkedList<>();
         }
 
-        for (int[] each : prerequisites) {
-            graph[each[0]].add(each[1]);
+        for (int i = 0; i < prerequisites.length; i++) {
+            graph[prerequisites[i][0]].add(prerequisites[i][1]);
         }
 
-        visited = new boolean[numCourses];
         onPath = new boolean[numCourses];
-        
-        for (int i = 0; i < numCourses; i++) {
+        visited = new boolean[numCourses];
+
+
+        for (int i = 0; i < graph.length; i++) {
             traverse(graph, i);
         }
 
         return !hasCycle;
+
+
+        // add all the edge to a graph
+        // List<Integer>[] graph = new LinkedList[numCourses];
+
+        // for (int i = 0; i < numCourses; i++) {
+        //     graph[i] = new LinkedList<>();
+        // }
+
+        // for (int[] each : prerequisites) {
+        //     graph[each[0]].add(each[1]);
+        // }
+
+        // visited = new boolean[numCourses];
+        // onPath = new boolean[numCourses];
+
+        // for (int i = 0; i < numCourses; i++) {
+        //     traverse(graph, i);
+        // }
+
+        // return !hasCycle;
     }
 
-    public void traverse( List<Integer>[] graph, int n) {
+    public void traverse(List<Integer>[] graph, int n) {
         if (onPath[n]) {
             hasCycle = true;
         }
@@ -59,15 +80,55 @@ class Solution {
             return;
         }
 
+        onPath[n] = true;
         visited[n] = true;
 
-        onPath[n] = true;
-
-        for (int m:graph[n]) {
-            traverse(graph, m);
+        for (int t : graph[n]) {
+            traverse(graph, t);
         }
-        
+
         onPath[n] = false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // if (onPath[n]) {
+        //     hasCycle = true;
+        // }
+
+        // if (hasCycle || visited[n]) {
+        //     return;
+        // }
+
+        // visited[n] = true;
+
+        // onPath[n] = true;
+
+        // for (int m:graph[n]) {
+        //     traverse(graph, m);
+        // }
+        
+        // onPath[n] = false;
     }
 
 }
