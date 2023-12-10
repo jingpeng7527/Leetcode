@@ -23,6 +23,12 @@
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         
+        // 1. when both are null, return true
+        // 2. when one of them is null, return false
+        // 3. when both are not null, compare the value, if not equal, return false
+        // 4. when both are not null, compare the left and right, if not equal, return false
+        // 5. when both are not null, compare the left and right, if equal, return true
+
         if (p == null && q == null) {
             return true;
         }
