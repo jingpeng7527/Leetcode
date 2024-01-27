@@ -21,7 +21,6 @@ class Solution {
 
         return sb.toString();
 
-
         // Deque<Character> stack = new LinkedList<>();
         // stack.push(s.charAt(0));
 
