@@ -18,7 +18,7 @@ class Solution {
         Set<String> deads = new HashSet<>();
         for (String s : deadends) {
             deads.add(s);
-            if (s.equals("0000")) {
+            if ("0000".equals(s)) {
                 return -1;
             }
         }

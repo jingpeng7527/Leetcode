@@ -11,13 +11,13 @@ class Solution {
     public int evalRPN(String[] tokens) {
         Deque<Integer> stack = new LinkedList<>();
         for (int i = 0; i < tokens.length; i++) {
-            if (tokens[i].equals("+") ){
+            if ("+".equals(tokens[i]) ){
                 stack.push(stack.pop() + stack.pop());
-            } else if (tokens[i].equals("-") ){
+            } else if ("-".equals(tokens[i]) ){
                 stack.push(-stack.pop() + stack.pop());
-            } else if (tokens[i].equals( "*") ){
+            } else if ("*".equals (tokens[i]) ){
                 stack.push(stack.pop() * stack.pop());
-            } else if (tokens[i].equals("/")) {
+            } else if ("/".equals(tokens[i])) {
                 int num1 = stack.pop();
                 int num2 = stack.pop();
                 stack.push( num2/ num1);
