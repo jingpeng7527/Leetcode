@@ -22,7 +22,9 @@ class Solution {
     }
 
     private void backtracking(List<Integer> list, int target, int[] candidates, int sum, int start) {
-        
+        // if (sum>target) {
+        //     return;
+        // }
         if (sum == target) {
             res.add(new ArrayList<>(list));
             // for (int j : list) {
