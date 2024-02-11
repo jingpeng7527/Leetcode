@@ -11,15 +11,62 @@ import java.util.PriorityQueue;
 
 class Solution {
     public int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> maxqQueue = new PriorityQueue<>(Collections.reverseOrder());
-        // maxqQueue.addAll(nums);
-        for (Integer integer : nums) {
-            maxqQueue.add(integer);
+        // PriorityQueue<Integer> maxqQueue = new PriorityQueue<>(Collections.reverseOrder());
+        // // maxqQueue.addAll(nums);
+        // for (Integer integer : nums) {
+        //     maxqQueue.add(integer);
+        // }
+        // for (int i = 0; i < k-1; i++) {
+        //     maxqQueue.poll();
+        // }
+        // return maxqQueue.poll();
+
+        heapSort(nums, k);
+        return nums[nums.length - k];
+    }
+
+
+    public void heapSort(int[] nums, int k) {
+        // build max heap
+        buildMaxHeap(nums);
+
+        // sort
+        for(int i = 0; i < k; i++) {
+            swap(nums, 0, nums.length - i - 1);
+            heapify(nums, nums.length- i -1, 0);
+         }
+
+    }
+
+    public void buildMaxHeap(int[] nums) {
+        for(int i = nums.length / 2 - 1; i >= 0; i--){
+            heapify(nums, nums.length, i);
         }
-        for (int i = 0; i < k-1; i++) {
-            maxqQueue.poll();
+    }
+    
+    public void heapify(int[] nums, int length, int i) {
+        int l = 2 * i + 1;
+        int r = 2 * i + 2;
+
+        int largest = i;
+        if (l < length && nums[l] > nums[largest]) {
+            largest = l;
         }
-        return maxqQueue.poll();
+
+        if (r < length && nums[r] > nums[largest]) {
+            largest = r;
+        }
+
+        if (largest != i) {
+            swap(nums, i, largest);
+            heapify(nums, length, largest);
+        }
+    }
+    
+    public void swap(int[] nums, int left, int right) {
+        int i = nums[left];
+        nums[left] = nums[right];
+        nums[right] = i;
     }
 }
 // @lc code=end
