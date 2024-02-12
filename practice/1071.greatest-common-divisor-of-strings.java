@@ -18,20 +18,26 @@ class Solution {
             reminer = m % n;
         }
 
-        StringBuilder sb = new StringBuilder();
-        String res = "";
-        res = str1.substring(0, n);
+        if (!str1.concat(str2).equals(str2.concat(str1))) {
+            return "";
+        }
+        return str1.substring(0, n);
 
-        for (int i = 0; i < str1.length() / n; i++) {
-            if (!str1.substring(i * n, (i + 1) * n).equals(res)) {
-                return "";
-            }
-        }
-        for (int i = 0; i < str2.length() / n; i++) {
-            if (!str2.substring(i * n, (i + 1) * n).equals(res)) {
-                return "";
-            }
-        }
+
+        // StringBuilder sb = new StringBuilder();
+        // String res = "";
+        // res = str1.substring(0, n);
+
+        // for (int i = 0; i < str1.length() / n; i++) {
+        //     if (!str1.substring(i * n, (i + 1) * n).equals(res)) {
+        //         return "";
+        //     }
+        // }
+        // for (int i = 0; i < str2.length() / n; i++) {
+        //     if (!str2.substring(i * n, (i + 1) * n).equals(res)) {
+        //         return "";
+        //     }
+        // }
 
         // for (int i = 0; i < str1.length() / n; i++) {
         //     sb.append(res);
@@ -50,7 +56,7 @@ class Solution {
         //     return "";
         // }
 
-        return res;
+        // return res;
 
     }
 }
