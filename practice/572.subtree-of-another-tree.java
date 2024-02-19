@@ -24,6 +24,9 @@ import javax.swing.tree.TreeNode;
  */
 class Solution {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        // 1. we need to check if the two trees are the same
+        // 2. if not, we need to check if the left subtree or right subtree is the same
+
         if (isSameTree(root, subRoot)) {
             return true;
         }
