@@ -19,14 +19,27 @@ import java.util.List;
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
+
+        ListNode pre = null;
+        ListNode cur = head;
+
+        while(cur!=null){
+            ListNode after = cur.next;
+            cur.next = pre;
+
+            pre = cur;
+            cur = after;
         }
-        ListNode tmp = reverseList(head.next);
-        head.next.next = head;
-        head.next = null;
+        return pre;
+
+        // if (head == null || head.next == null) {
+        //     return head;
+        // }
+        // ListNode tmp = reverseList(head.next);
+        // head.next.next = head;
+        // head.next = null;
         
-        return tmp;
+        // return tmp;
 
         // ListNode prev = null;
         // ListNode tmp = null;
