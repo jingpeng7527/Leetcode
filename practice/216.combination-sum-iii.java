@@ -9,28 +9,44 @@ class Solution {
     List<List<Integer>> res = new ArrayList<>();
 
     public List<List<Integer>> combinationSum3(int k, int n) {
-        backtracking(k, n, 1, 0, new ArrayList<>());
+        if (k <= 0 || n <= 0 || k > n) {
+            return res;
+        }
+
+        if (n > (19 - k) * k / 2) {
+            return res;
+        }
+
+        Deque<Integer> path = new ArrayDeque<>();
+        backtracking(k, n, 1, path);
         return res;
     }
-    public void backtracking(int k, int n, int cur, int sum, List<Integer> curL) {
-        if (sum < n && curL.size() >= k) {
+
+    public void backtracking(int k, int n, int cur, Deque<Integer> curL) {
+        if (n > 0 && curL.size() >= k) {
+            // for (int i : curL) {
+            //     System.out.println(i +" >0");
+            // }
             return;
         }
-        if (sum > n || curL.size() > k) {
+        if (n < 0 || curL.size() > k) {
+            // for (int i : curL) {
+            //     System.out.println(i+" <0");
+            // }
             return;
         }
-        if (sum == n && curL.size() == k) {
+        if (n == 0 && curL.size() == k) {
             res.add(new ArrayList(curL));
-            // for(int i: curL){
+            // for (int i : curL) {
             //     System.out.print(i);
             // }
             return;
         }
 
         for (int i = cur; i < 10; i++) {
-            curL.add(i);
-            backtracking(k, n, i+1, sum + i, curL);
-            curL.remove(curL.size() - 1);
+            curL.addLast(i);
+            backtracking(k, n - i, i + 1, curL);
+            curL.removeLast();
         }
     }
 }
